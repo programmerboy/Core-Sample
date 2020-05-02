@@ -1,0 +1,42 @@
+{
+  "Sample": {
+    "Carriers": [
+      {
+        "Country": "Canada",
+        "CarrierName": "Rogers",
+        "Two_G": "1800",
+        "Three_G": "1900",
+        "Four_G": "2000",
+        "Five_G": "2100"
+      },
+      {
+        "Country": "Canada",
+        "CarrierName": "Bell",
+        "Two_G": "1800",
+        "Three_G": "1900",
+        "Four_G": "2000",
+        "Five_G": "2100"
+      }
+    ],
+    "Devices": [
+      {
+        "Brand": "Samsung",
+        "PhoneModel": "Note 9",
+        "SubModel": "N70",
+        "Two_G": "1800",
+        "Three_G": "1900",
+        "Four_G": "2000",
+        "Five_G": "2100"
+      },
+      {
+        "Brand": "Samsung",
+        "PhoneModel": "Note 9",
+        "SubModel": "N90",
+        "Two_G": "1500",
+        "Three_G": "1600",
+        "Four_G": "2100",
+        "Five_G": "2500"
+      }
+    ]
+  }
+}
