@@ -1,0 +1,28 @@
+@import 'otd-material-colors-map';
+
+:host {
+
+  @each $color-name,
+  $color-variants in $material-colors {
+    --#{$color-name}: #{map-get($color-variants, '500')};
+  }
+}
+
+@mixin generate-palette ($name: 'otd') {
+
+  @each $color-name,
+  $color-variants in $material-colors {
+
+    @each $color-variant,
+    $hex-value in $color-variants {
+      .#{$name}-#{$color-name}-#{$color-variant} {
+        color: #{$hex-value}
+      }
+
+      .#{$name}-bg-#{$color-name}-#{$color-variant} {
+        background-color: #{$hex-value}
+      }
+    }
+  }
+
+}

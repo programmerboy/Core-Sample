@@ -1,0 +1,55 @@
+<div class="theme-wrapper otd-candy-theme">
+
+  <mat-sidenav-container>
+
+    <mat-sidenav #sidenav mode="push">
+      <div class="branding">
+        <img src="/assets/images/app-logo.png" />
+        <span>OTD</span>
+      </div>
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let item of navigationSideMenu" (click)="sidenav.close()" [routerLink]="[item.link]"
+          routerLinkActive="active">
+          {{item.label}}
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <div class="wrapper">
+
+      <div class="toolbar">
+
+        <mat-toolbar color="primary">
+
+          <button mat-icon-button class="d-md-none" (click)="sidenav.open()">
+            <mat-icon>list</mat-icon>
+          </button>
+
+          <span routerLink="" class="branding spacer center d-inline d-sm-none"><img src="/assets/images/app-logo.png"
+              alt="OTD" /></span>
+          <span routerLink="" class="branding spacer center d-none d-sm-inline d-md-none">
+            <img src="/assets/images/app-logo.png" alt="OTD" />
+            OTD
+          </span>
+          <span routerLink="" class="branding spacer d-none d-md-inline"><img src="/assets/images/app-logo.png"
+              alt="OTD" /> OTD</span>
+
+          <span class="d-none d-md-inline">
+            <button mat-button class="nav-button" *ngFor="let item of navigation" [routerLink]="[item.link]"
+              routerLinkActive="active">
+              {{item.label}}
+            </button>
+          </span>
+
+        </mat-toolbar>
+      </div>
+
+      <div class="content">
+        <router-outlet #o="outlet"></router-outlet>
+      </div>
+
+    </div>
+
+  </mat-sidenav-container>
+
+</div>

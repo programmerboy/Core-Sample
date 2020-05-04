@@ -1,0 +1,130 @@
+@import './sass-helpers/otd-mixins';
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.badge {
+  @include createBadge(#5cb85c);
+}
+
+.badge-danger {
+  @include createBadge(#f36460);
+}
+
+.badge-black {
+  @include createBadge(#000);
+}
+
+.shaded-background {
+  background: rgba(34, 14, 14, 0.26);
+  padding: 5px;
+  @include createBorderRadius(5px);
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.three-fourth-width {
+  width: 75% !important;
+}
+
+.half-width {
+  width: 50% !important;
+}
+
+.quarter-width {
+  width: 25% !important;
+}
+
+.btn-primary-g,
+.btn-success-g,
+.btn-info-g,
+.btn-warning-g {
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn-danger-g {
+  @include createGradient(#f36460, 7%, "dark");
+}
+
+.btn-primary-g {
+  @include createGradient(#6aaae1, 30%, "dark");
+}
+
+.btn-success-g {
+  @include createGradient(#8add6d, 30%, "dark");
+}
+
+.btn-info-g {
+  @include createGradient(#5bc0de, 20%, "dark");
+}
+
+.btn-warning-g {
+  @include createGradient(#f0ad4e, 15%, "dark");
+}
+
+.btn-default-g {
+  @include createGradient(#fff, 30%, "dark");
+  border: solid 1px lighten(#666, 15%);
+}
+
+.btn-white-g {
+  @include createGradient(#fff, 10%, "dark");
+  border: solid 1px lighten(#666, 15%);
+}
+
+////@extend////
+$sizes: 12,
+18,
+24,
+36,
+48;
+@include create-md-icons($sizes);
+
+.cursor-hand {
+  cursor: pointer;
+}
+
+//Custom-Card
+
+.list-card {
+  padding: 5px 10px !important;
+  margin-bottom: 5px;
+
+  .mat-card-header {
+    .mat-card-title {
+      display: flex;
+      align-items: flex-end;
+      font-size: 14px;
+      margin-bottom: 0 !important;
+    }
+
+    .mat-card-header-text {
+      margin: 0 -3px 3px !important;
+    }
+
+  }
+
+  .mat-card-actions .mat-icon {
+    cursor: pointer;
+  }
+
+  .mat-card-actions,
+  .mat-card-content,
+  .mat-card-subtitle {
+    margin-bottom: 3px;
+    line-height: normal;
+  }
+
+  .mat-card-content {
+    margin-left: -3px;
+  }
+
+  .mat-card-actions {
+    padding: 0;
+  }
+}

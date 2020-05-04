@@ -1,0 +1,5 @@
+$otd-candy-primary: mat-palette($mat-indigo);
+$otd-candy-accent:  mat-palette($mat-pink, A200, A100, A400);
+$otd-candy-warn:    mat-palette($mat-red);
+
+$otd-candy-theme: mat-light-theme($otd-candy-primary, $otd-candy-accent, $otd-candy-warn);

@@ -1,0 +1,74 @@
+/////////////  ANIMATIONS //////////////////
+@mixin transition-transform($transition) {
+  transition: transform $transition;
+}
+
+@mixin rotate($degrees) {
+  transform: rotate($degrees);
+}
+
+// Transformations
+@mixin scale($ratio) {
+  transform: scale($ratio);
+}
+
+@mixin scale-rotate($size, $angle) {
+  transform: scale($size) rotate($angle);
+}
+
+/////////// END ANIMATIONS //////////////
+
+@mixin createBadge($color) {
+  background: linear-gradient(to bottom, $color 0, lighten($color, 3%) 100%);
+  border: 1px double darken($color, 15%);
+  @include createBorderRadius(5px);
+  color: #fff !important;
+  font-weight: bold;
+  padding: 5px;
+}
+
+@mixin createBoxShadow($x: 1px, $y: 1px, $blur: 1px, $color: #000) {
+  -webkit-box-shadow: $arguments;
+  -moz-box-shadow: $arguments;
+  box-shadow: $arguments;
+}
+
+@mixin createBorderRadius($radius: 5px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin createGradient($color, $gradientValue: 5%, $type: "") {
+  background: linear-gradient(to bottom, $color 0, darken($color, $gradientValue) 100%) !important;
+}
+
+@mixin create-md-icons ($sizes) {
+
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+
+    .material-icons.md-#{$size} {
+      font-size: #{$size}px;
+    }
+  }
+
+  /* Rules for using icons as black on a light background. */
+  .material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  .material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+  }
+
+  /* Rules for using icons as white on a dark background. */
+  .material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+}

@@ -1,0 +1,32 @@
+.total {
+  margin-left: 5px;
+  vertical-align: -webkit-baseline-middle;
+}
+
+.total-label {
+  margin-right: 5px;
+}
+
+::ng-deep .mat-paginator-container {
+  padding: 0 5px !important;
+}
+
+::ng-deep .mat-paginator-page-size {
+  margin-right: 5px !important;
+}
+
+::ng-deep .mat-paginator-page-size-label {
+  margin: 0 2px !important;
+}
+
+::ng-deep .mat-paginator-page-size-select {
+  width: 35px !important;
+}
+
+::ng-deep .mat-paginator-range-actions .mat-icon-button {
+  width: 24px !important;
+}
+
+::ng-deep .mat-paginator-range-label {
+  margin: 0 4px !important;
+}

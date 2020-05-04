@@ -35,8 +35,10 @@ namespace Core_Sample
             services.Configure<AppSettings>(secAppSettings);
             services.Configure<SampleSettings>(secSample);
 
-            /*var appSettings = secAppSettings.Get<AppSettings>();
+            var appSettings = secAppSettings.Get<AppSettings>();
+            var sample = secAppSettings.Get<SampleSettings>();
 
+            /*
             services.AddCors(policy =>
             {
                 policy.AddPolicy("MyCorsPolicy", builder =>
@@ -98,14 +100,25 @@ namespace Core_Sample
             // Authenticate before the user accesses secure resources.
             app.UseAuthentication();
 
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "Spa",
+                    pattern: "{*url}",
+                    defaults: new { controller = "Home", action = "Spa" });
             });
+
+
         }
     }
 }

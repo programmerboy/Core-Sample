@@ -1,0 +1,24 @@
+<div [@flyInOut]="'in'" *ngIf="alert?.showAlert" class="my-alert">
+  <div class='alert flex-container' [ngClass]="{
+            ' alert-success'  : isSuccess,
+             'alert-warning'  : isWarning,
+             'alert-danger'   : isError,
+             'alert-info'     : isInfo }" role="alert">
+    <span class="md-24 icon material-icons">
+      {{isSuccess ? 'check_circle': isWarning ? 'warning' : isError ? 'cancel' : 'info'}}
+    </span>
+    <!--Alert Message-->
+    <span [innerHTML]='alert?.message' class="message"></span>
+    <span>
+      <button type="button" class="close spin" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </span>
+  </div>
+</div>
+<!--Shows when request is pending-->
+<div class="pending-request" *ngIf="isPending">
+  <div id="loader"></div> <span class="loader-text">Please wait...</span>
+</div>
+<!--Shows when request is pending and you want to put an overlay to avoid interaction-->
+<div id="disable-backdrop" [style.height.px]="backDropHeight" *ngIf="isPending && disableInteraction"></div>

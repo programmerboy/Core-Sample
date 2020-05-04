@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using System.IO;
 
 namespace Core_Sample
@@ -12,8 +13,8 @@ namespace Core_Sample
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost
+        public static IHostBuilder CreateWebHostBuilder(string[] args) =>
+            Host
             .CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
@@ -29,8 +30,13 @@ namespace Core_Sample
                 .AddJsonFile("sample.json", optional: false, reloadOnChange: false)
                 .AddCommandLine(args);
             })
-            .UseKestrel()
-            .UseIISIntegration()
-            .UseStartup<Startup>();
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                //webBuilder.UseContentRoot(Directory.GetCurrentDirectory());
+                webBuilder.UseIISIntegration();
+                webBuilder.UseStartup<Startup>();
+
+            });
+       
     }
 }

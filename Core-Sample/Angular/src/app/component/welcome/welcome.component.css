@@ -1,0 +1,13 @@
+.carousel {
+  margin-top: -10px;
+}
+
+.carousel-caption h5 {
+  color: #1546d2;
+  font-weight: bold;
+}
+
+.carousel-caption p {
+  color: green;
+  font-style: italic;
+}

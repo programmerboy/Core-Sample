@@ -1,0 +1,20 @@
+<div>
+  <button type="button" class="close tb-btn-close" data-dismiss="modal" aria-label="Close" mat-dialog-close>
+    <i class="material-icons">close</i>
+  </button>
+</div>
+
+<div mat-dialog-title class="d-flex">
+  <h2 class="modal-title">{{title}}</h2>
+</div>
+
+<div mat-dialog-content>
+  <span [innerHTML]="text"></span>
+</div>
+
+<div mat-dialog-actions class="float-right">
+  <button type="button" class="btn btn-secondary btn-warning" style="top: -5px;"
+    mat-dialog-close>{{noText}}</button>&nbsp;
+  <button mat-raised-button type="button" class="btn btn-secondary btn-info" cdkFocusInitial
+    [mat-dialog-close]="true">{{yesText}}</button>
+</div>
