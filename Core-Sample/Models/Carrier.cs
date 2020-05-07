@@ -30,10 +30,10 @@ namespace Core_Sample.Models
         [Display(Name = "5G"), StringLength(600, ErrorMessage = "5G cannot be longer than 600 characters.")]
         public string Five_G { get; set; }
 
-        [Display(Name = "Time Added")]
-        public Nullable<DateTime> Date_Added { get; set; }
+        [Display(Name = "Time Added"), DataType(DataType.DateTime)]
+        public DateTime Date_Added { get; set; }
 
-        [Display(Name = "Time Modified")]
-        public Nullable<DateTime> Date_Modified { get; set; }
+        [Display(Name = "Time Modified"), DataType(DataType.DateTime)]
+        public DateTime Date_Modified { get; set; }
     }
 }

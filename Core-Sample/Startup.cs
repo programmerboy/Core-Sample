@@ -32,13 +32,13 @@ namespace Core_Sample
             var secAppSettings = Configuration.GetSection("AppSettings");
             var secSample = Configuration.GetSection("Sample");
 
+            var rolesSection = Configuration.GetSection("Sample:Carriers");
+
             services.Configure<AppSettings>(secAppSettings);
-            services.Configure<SampleSettings>(secSample);
+            services.Configure<Sample>(secSample);
 
             var appSettings = secAppSettings.Get<AppSettings>();
-            var sample = secAppSettings.Get<SampleSettings>();
 
-            /*
             services.AddCors(policy =>
             {
                 policy.AddPolicy("MyCorsPolicy", builder =>
@@ -49,7 +49,7 @@ namespace Core_Sample
                     .WithMethods(appSettings.Cors.Methods.ToArray())
                     .WithExposedHeaders(appSettings.Cors.ExposedHeaders.ToArray());
                 });
-            });*/
+            });
 
             services.AddControllers(options =>
             {
@@ -95,7 +95,7 @@ namespace Core_Sample
             app.UseHttpsRedirection();
 
             // use CORS policy
-            //app.UseCors("MyCorsPolicy");
+            app.UseCors("MyCorsPolicy");
 
             // Authenticate before the user accesses secure resources.
             app.UseAuthentication();

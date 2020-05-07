@@ -2,8 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { COMMON_ENV_VARIABLES } from './common.env.variables';
+
 export const environment = {
-  production: false
+  production: false,
+  // API_URL: '/api',
+  API_URL: 'https://localhost:44397/api',
+  ...COMMON_ENV_VARIABLES
 };
 
 /*

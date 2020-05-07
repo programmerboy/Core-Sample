@@ -1,7 +1,8 @@
-<div class="theme-wrapper otd-candy-theme">
+<app-base [isPending]="isPending" [disableInteraction]="disableInteraction" [alert]="alert"
+  (onClose)="onAlertClose($event)"></app-base>
 
+<div [class]="'theme-wrapper ' + themeName">
   <mat-sidenav-container>
-
     <mat-sidenav #sidenav mode="push">
       <div class="branding">
         <img src="/assets/images/app-logo.png" />
@@ -44,7 +45,7 @@
         </mat-toolbar>
       </div>
 
-      <div class="content">
+      <div class="content p-2">
         <router-outlet #o="outlet"></router-outlet>
       </div>
 

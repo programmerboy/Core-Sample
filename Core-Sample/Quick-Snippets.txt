@@ -1,0 +1,30 @@
+﻿net stop was /y
+net start w3svc
+
+Add-Migration "AnyMigrationName"
+Update-Database
+Script-Migration [-To <starting-migration>] [-From <ending-migration>] [-Output "myMigrations.sql"]
+Script-Migration -To PrayerTimes -From NewFieldsAdded [-Output "myMigrations.sql"]
+
+To Revert to a specific Migration
+Update-Database -Migration "NewFieldsAdded"
+
+To delete last migration file
+Remove-Migration
+
+To Revert ALL Migrations
+Update-Database -Migration 0
+
+Add Default SQL value
+table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()")
+
+MSSQL$SQLEXPRESS
+IIS AspNetCore Module
+
+Add following in web.config if you get 405 errors (in LOCAL IIS or Production Web Server)
+
+<system.webServer>
+	<modules runAllManagedModulesForAllRequests="false">
+	<remove name="WebDAVModule" />
+	</modules>
+</system.webServer>

@@ -1,0 +1,93 @@
+<div class="container">
+  <h2>Filter Lookup</h2>
+  <form [formGroup]="searchForm">
+    <div class="form-row">
+      <div class="col-md-auto">
+        <mat-form-field appearance="outline" [color]="accent">
+          <mat-label>Country</mat-label>
+          <mat-select placeholder="Please Select Country" formControlName="country"
+            [ngClass]="{'is-invalid' : error.country}">
+            <mat-option *ngFor="let item of countries" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="error.country">{{error.country}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-auto">
+        <mat-form-field appearance="outline" [color]="accent">
+          <mat-label>Carrier</mat-label>
+          <mat-select placeholder="Please Select Carrier" formControlName="carrierName"
+            [ngClass]="{'is-invalid' : error.carrierName}">
+            <mat-option value="">-- Please Select --</mat-option>
+            <mat-option *ngFor="let item of carriers" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="error.carrierName">{{error.carrierName}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row align-items-center">
+      <div class="col-md-auto">
+        <mat-form-field appearance="outline" [color]="warn">
+          <mat-label>Brand</mat-label>
+          <mat-select placeholder="Please Select Brand" formControlName="brand"
+            [ngClass]="{'is-invalid' : error.brand}">
+            <mat-option *ngFor="let item of brands" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="error.brand">{{error.brand}}</mat-error>
+        </mat-form-field>
+
+      </div>
+      <div class="col-md-auto">
+        <mat-form-field appearance="outline" [color]="warn">
+          <mat-label>Model</mat-label>
+          <mat-select placeholder="Please Select Device Model" formControlName="phoneModel"
+            [ngClass]="{'is-invalid' : error.phoneModel}">
+            <mat-option *ngFor="let item of models" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="error.phoneModel">{{error.phoneModel}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-auto">
+        <mat-form-field appearance="outline" [color]="warn">
+          <mat-label>Sub Model</mat-label>
+          <mat-select placeholder="Please Select Sub Model" formControlName="subModel">
+            <mat-option *ngFor="let item of subModels" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-auto">
+        <button mat-mini-fab (click)="reset()" aria-label="Refresh" class="mr-1">
+          <mat-icon>refresh</mat-icon>
+        </button>
+        <button mat-mini-fab (click)="search()" aria-label="Search" class="mr-1" [disabled]="!searchForm.valid">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card" [@flyInOut]="'in'" *ngIf="isSearched">
+        <h5 class="card-header">{{searchedDeviceName}} <img src="/assets/images/smart-device.png"
+            matTooltip="Click to show Device Frequencies" (click)="showDeviceFreq()" /></h5>
+        <div class="card-body">
+          <h5 class="card-title">{{searchedCarrierName}} <img src="/assets/images/cell-tower.png"
+              matTooltip="Click to show Career Frequencies" (click)="showCareerFreq()" /></h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

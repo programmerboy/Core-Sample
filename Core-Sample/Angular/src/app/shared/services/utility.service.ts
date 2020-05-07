@@ -17,6 +17,7 @@ export class UtilityService {
     const currentErrors: ValidationErrors = c.errors;
 
     if (currentErrors) {
+
       if (currentErrors.required) {
         msgs.required = 'This is a required field.';
       }
@@ -43,14 +44,6 @@ export class UtilityService {
 
       if (currentErrors.range) {
         msgs.range = `Should be within the range.`;
-      }
-
-      if (currentErrors.latitude) {
-        msgs.latitude = `Should be a valid Latitude.`;
-      }
-
-      if (currentErrors.longitude) {
-        msgs.longitude = `Should be a valid Longitude.`;
       }
 
       if (currentErrors.notMatched) {

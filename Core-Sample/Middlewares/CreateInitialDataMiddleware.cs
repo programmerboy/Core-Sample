@@ -20,17 +20,17 @@ namespace Core_Sample.Middlewares
             _next = next;
         }
 
-        public async Task InvokeAsync(HttpContext context, ISampleService userService, IOptions<SampleSettings> settings)
+        public async Task InvokeAsync(HttpContext context, ISampleService userService, IOptions<Sample> settings)
         {
             foreach (var carrier in settings.Value.Carriers)
             {
 
             }
 
-            foreach (var device in settings.Value.Devices)
-            {
+            //foreach (var device in settings.Value.Devices)
+            //{
 
-            }
+            //}
 
             // Call the next delegate/middleware in the pipeline
             await _next(context);

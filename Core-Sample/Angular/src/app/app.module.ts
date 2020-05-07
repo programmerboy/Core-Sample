@@ -13,6 +13,9 @@ import { PrototypeService } from './shared/services/prototype.service';
 import { SharedModule } from './shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BaseComponent } from './shared/base/base.component';
+import { LookupComponent } from './component/lookup-component/lookup.component';
+import { LookupService } from './component/lookup-component/lookup.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { BaseComponent } from './shared/base/base.component';
     AppComponent,
     WelcomeComponent,
     AboutComponent,
+    LookupComponent
   ],
   imports: [
     SharedModule,
@@ -31,6 +35,8 @@ import { BaseComponent } from './shared/base/base.component';
     BaseService,
     LocatorService,
     HttpHelperService,
+    //
+    LookupService
   ],
   entryComponents: [
     ConfirmModalComponent,
