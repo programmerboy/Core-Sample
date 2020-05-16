@@ -57,8 +57,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   initializeLinks = () => {
 
     this.navigation = [
+      new NavigationModel('/lookup', 'Device Compatablity', false),
+      new NavigationModel('/devices', 'Devices', false),
       new NavigationModel('/about', 'About', false),
-      new NavigationModel('/lookup', 'Lookup', false),
       // new NavigationModel('/samples', 'Samples', false),
     ];
 
@@ -85,5 +86,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     overlayContainerClasses.add(effectiveTheme);
   }
 
+  public onAlertClose(alert: CustomAlertConfig) {
+    this._ms.onAlertClosed(alert);
+  }
 
 }

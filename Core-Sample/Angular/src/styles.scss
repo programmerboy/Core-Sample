@@ -39,6 +39,12 @@ body {
   width: 25% !important;
 }
 
+.btn-icon {
+  align-items: center;
+  display: flex;
+  min-height: 40px;
+}
+
 .btn-primary-g,
 .btn-success-g,
 .btn-info-g,
@@ -127,4 +133,12 @@ $sizes: 12,
   .mat-card-actions {
     padding: 0;
   }
+}
+
+// Toast related CSS
+.mat-snack-bar-container.no-background {
+  margin: 0;
+  padding: 5px;
+  background: 0 0;
+  box-shadow: none;
 }

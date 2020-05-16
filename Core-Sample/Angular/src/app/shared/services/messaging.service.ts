@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CustomAlertConfig, AlertType } from '../base/base.component';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material';
+import { ToastModalComponent } from '../modals/toast-modal/toast-modal.component';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,25 @@ export class MessagingService {
 
   public showSnackBar(message: string, action = null, config = null) {
     return this._sb.open(message, action, config || { duration: 5000 });
+  }
+
+  // tslint:disable-next-line:max-line-length
+  public showToast(message: string, type?: AlertType, title?: string, teaser: string = '', timeout?: number,
+    vPos?: MatSnackBarVerticalPosition, hPos?: MatSnackBarHorizontalPosition) {
+
+    const ref = this._sb.openFromComponent(ToastModalComponent,
+      {
+        panelClass: 'no-background',
+        duration: timeout || 30000,
+        verticalPosition: vPos || 'top',
+        horizontalPosition: hPos || 'right',
+        data: {
+          title: title || 'Notification',
+          type: type || AlertType.Info,
+          message: message,
+          teaser: teaser
+        }
+      });
   }
 
 }

@@ -20,7 +20,7 @@ namespace Core_Sample.Interfaces
 
         Task<List<DTOCarrier>> GetCarriersAdvance(string country);
 
-        Task<IEnumerable<DTODevice>> GetDevices(string brand, string model);
+        Task<List<DTODevice>> GetDevices(string brand, string model);
 
         Task<DTOCompatablity> SearchCompatablity(DTOSearch search);
 

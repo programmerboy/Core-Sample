@@ -4,6 +4,7 @@ using Core_Sample.DataContexts;
 using Core_Sample.DTOs;
 using Core_Sample.Helpers;
 using Core_Sample.Interfaces;
+using Core_Sample.Models;
 using CoreSample.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -42,7 +43,7 @@ namespace Core_Sample.Services
 
         public async Task<List<string>> GetCarriers(string country)
         {
-            country = country.Trim().ToUpper();
+            country = country.TrimAndUpper();
 
             var list = await _dbContext.Carriers
                .Where(r => r.Country.ToUpper().Equals(country))
@@ -56,7 +57,7 @@ namespace Core_Sample.Services
 
         public async Task<List<DTOCarrier>> GetCarriersAdvance(string country)
         {
-            country = country.Trim().ToUpper();
+            country = country.TrimAndUpper();
 
             var list = await _dbContext.Carriers
                 .Where(r => r.Country.ToUpper().Equals(country))
@@ -77,13 +78,25 @@ namespace Core_Sample.Services
             return list;
         }
 
-        public async Task<IEnumerable<DTODevice>> GetDevices(string brand, string model)
+        public async Task<List<DTODevice>> GetDevices(string brand, string model)
         {
-            brand = brand.Trim().ToUpper();
-            model = model.Trim().ToUpper();
+            brand = brand.TrimAndUpper();
+            model = model.TrimAndUpper();
 
             var list = await _dbContext.Devices
                 .Where(r => r.Brand.ToUpper().Equals(brand) && (string.IsNullOrWhiteSpace(model) || r.PhoneModel.ToUpper().Equals(model)))
+                .Select(r => new Device
+                {
+                    Brand = r.Brand,
+                    PhoneModel = r.PhoneModel,
+                    SubModel = r.SubModel,
+                    Two_G = r.Two_G.Replace("/", ", "),
+                    Three_G = r.Three_G.Replace("/", ", "),
+                    Four_G = r.Four_G.Replace("/", ", "),
+                    Five_G = r.Five_G.Replace("/", ", "),
+                    Date_Added = r.Date_Added,
+                    Date_Modified = r.Date_Modified
+                })
                 .ToListAsync();
 
             var dtoList = _mapper.Map<IList<DTODevice>>(list);
@@ -93,7 +106,7 @@ namespace Core_Sample.Services
 
         public async Task<List<string>> GetModels(string brand)
         {
-            brand = brand.Trim().ToUpper();
+            brand = brand.TrimAndUpper();
 
             var list = await _dbContext.Devices
               .Where(r => r.Brand.ToUpper().Equals(brand))
@@ -107,8 +120,8 @@ namespace Core_Sample.Services
 
         public async Task<List<string>> GetSubModels(string brand, string model)
         {
-            brand = brand.Trim().ToUpper();
-            model = model.Trim().ToUpper();
+            brand = brand.TrimAndUpper();
+            model = model.TrimAndUpper();
 
             var list = await _dbContext.Devices
               .Where(r => r.Brand.ToUpper().Equals(brand) && r.PhoneModel.ToUpper().Equals(model) && !r.SubModel.Trim().Equals(""))
@@ -130,7 +143,7 @@ namespace Core_Sample.Services
             var carrier = await _dbContext.Carriers.FirstOrDefaultAsync(r => search.Country.Equals(r.Country) && search.CarrierName.Equals(r.CarrierName));
 
             var device = await _dbContext.Devices
-                .FirstOrDefaultAsync(r => search.Brand.Equals(r.Brand) && search.Brand.Equals(r.Brand) &&
+                .FirstOrDefaultAsync(r => search.Brand.Equals(r.Brand) && search.PhoneModel.Equals(r.PhoneModel) &&
                                     (string.IsNullOrWhiteSpace(search.SubModel) || r.SubModel.Equals(search.SubModel)));
 
             var dtoCarrier = _mapper.Map<DTOCarrier>(carrier);

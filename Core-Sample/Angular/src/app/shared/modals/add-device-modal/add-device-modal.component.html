@@ -1,0 +1,86 @@
+<div>
+  <button type="button" class="close tb-btn-close" data-dismiss="modal" aria-label="Close" mat-dialog-close>
+    <i class="material-icons">close</i>
+  </button>
+</div>
+
+<div mat-dialog-title class="d-flex">
+  <h2 class="modal-title">Add Device</h2>
+</div>
+
+<div mat-dialog-content>
+  <!--Start Body-->
+  <form [formGroup]="addEditForm">
+    <div class="form-row mb-1">
+      <div class="col-md-4">
+        <mat-form-field class="w-100" appearance="outline" [color]="'warn'">
+          <mat-label>Brand</mat-label>
+          <input type="text" matInput placeholder="Please select brand" formControlName="brand" autocomplete="off"
+            [matAutocomplete]="brandsAC">
+          <mat-error *ngIf="error.brand">{{error.brand}}</mat-error>
+        </mat-form-field>
+
+        <mat-autocomplete #brandsAC="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions" [value]="option">{{option}}</mat-option>
+        </mat-autocomplete>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field class="w-100" appearance="outline" [color]="'warn'">
+          <mat-label>Device Model</mat-label>
+          <input type="text" matInput placeholder="Please select device model" formControlName="phoneModel"
+            autocomplete="off">
+          <mat-error *ngIf="error.phoneModel">{{error.phoneModel}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field class="w-100" appearance="outline" [color]="'warn'">
+          <mat-label>Sub Model</mat-label>
+          <input type="text" matInput placeholder="Please select sub-model" formControlName="subModel"
+            autocomplete="off">
+          <mat-error *ngIf="error.subModel">{{error.subModel}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-1">
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="outline" [color]="'warn'">
+          <mat-label>2G</mat-label>
+          <textarea matInput placeholder="Please enter 2G Bands" formControlName="two_G"></textarea>
+          <mat-error *ngIf="error.two_G">{{error.two_G}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="outline" [color]="'warn'">
+          <mat-label>3G</mat-label>
+          <textarea matInput placeholder="Please enter 3G Bands" formControlName="three_G"></textarea>
+          <mat-error *ngIf="error.three_G">{{error.three_G}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-1">
+      <div class="col-md-12">
+        <mat-form-field class="w-100" appearance="outline" [color]="'warn'">
+          <mat-label>4G</mat-label>
+          <textarea matInput placeholder="Please enter 4G Bands" formControlName="four_G"></textarea>
+          <mat-error *ngIf="error.four_G">{{error.four_G}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <!--5G Bands-->
+    <div class="form-row mb-1">
+      <div class="col-md-12">
+        <mat-form-field class="w-100" appearance="outline" [color]="'warn'">
+          <mat-label>5G</mat-label>
+          <textarea matInput placeholder="Please enter 5G Bands" formControlName="five_G"></textarea>
+          <mat-error *ngIf="error.five_G">{{error.five_G}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="justify-content-end">
+  <button class="btn btn-warning mr-1" type="button" mat-dialog-close>Cancel</button>
+  <button class="btn btn-success" type="button" (click)="process()" [disabled]="!addEditForm.valid">Save</button>
+</div>

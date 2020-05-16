@@ -50,6 +50,13 @@ namespace Core_Sample.Controllers
             return list;
         }
 
+        [HttpGet("GetDevices")]
+        public async Task<List<DTODevice>> GetDevices(string brand, string model)
+        {
+            var list = await _repo.GetDevices(brand, model);
+            return list;
+        }
+
         [HttpGet("GetModels")]
         public async Task<List<string>> GetModels(string brand)
         {

@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <h2>Devices</h2>
+  <div class="form-row">
+    <div class="col-md-auto">
+      <mat-form-field appearance="outline" [color]="'warn'">
+        <mat-label>Brand</mat-label>
+        <mat-select placeholder="Please select a device" [formControl]="ctrlBrand">
+          <mat-option *ngFor="let item of brands" [value]="item">
+            {{item}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-auto">
+      <button class="btn btn-primary btn-icon" (click)="addDevice()" aria-label="Add a Device">
+        <span class="material-icons mr-1">add</span> Add a Device
+      </button>
+    </div>
+  </div>
+  <div class="mat-elevation-z80">
+
+    <mat-form-field class="w-100">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Example. Galaxy Note">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort class="w-100 table-striped table-hover">
+
+      <ng-container matColumnDef="phoneModel">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header width="7.5%"> Model </th>
+        <td mat-cell *matCellDef="let element"> {{element.phoneModel}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="subModel">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header width="7.5%"> Sub-Model </th>
+        <td mat-cell *matCellDef="let element"> {{element.subModel}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="two_G">
+        <th mat-header-cell *matHeaderCellDef width="15%"> 2G </th>
+        <td mat-cell *matCellDef="let element"> {{element.two_G}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="three_G">
+        <th mat-header-cell *matHeaderCellDef width="10%"> 3G </th>
+        <td mat-cell *matCellDef="let element"> {{element.three_G}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="four_G">
+        <th mat-header-cell *matHeaderCellDef width="20%"> 4G </th>
+        <td mat-cell *matCellDef="let element"> {{element.four_G}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="five_G">
+        <th mat-header-cell *matHeaderCellDef width="30%"> 5G </th>
+        <td mat-cell *matCellDef="let element"> {{element.five_G}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date_Added" width="10%">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Added </th>
+        <td mat-cell *matCellDef="let element"> {{element.date_Added | date }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

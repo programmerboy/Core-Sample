@@ -16,6 +16,9 @@ import { BaseComponent } from './shared/base/base.component';
 import { LookupComponent } from './component/lookup-component/lookup.component';
 import { LookupService } from './component/lookup-component/lookup.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DevicesComponent } from './component/devices/devices.component';
+import { AddDeviceModalComponent } from './shared/modals/add-device-modal/add-device-modal.component';
+import { ToastModalComponent } from './shared/modals/toast-modal/toast-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     WelcomeComponent,
     AboutComponent,
-    LookupComponent
+    LookupComponent,
+    DevicesComponent,
+    AddDeviceModalComponent,
+    ToastModalComponent
   ],
   imports: [
     SharedModule,
@@ -40,6 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   entryComponents: [
     ConfirmModalComponent,
+    AddDeviceModalComponent,
+    ToastModalComponent
   ],
   bootstrap: [AppComponent]
 })

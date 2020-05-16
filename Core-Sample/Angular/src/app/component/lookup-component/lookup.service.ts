@@ -5,7 +5,7 @@ import { BaseService } from 'src/app/shared/services/base.service';
 import { env } from 'process';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
-import { LookupModel, Compatablity } from './lookup-model';
+import { LookupModel, Compatablity } from './lookup.model';
 import { Observable } from 'rxjs';
 
 @Injectable({

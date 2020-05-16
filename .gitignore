@@ -263,3 +263,7 @@ __pycache__/
 
 # Exclude JS Files
 **/*.js.map
+
+# Don't need JS or stylesheets
+**/wwwroot/**/*.js
+**/wwwroot/**/*.css

@@ -1,0 +1,18 @@
+<div class="toast">
+  <div class="toast-header" [ngClass]="{
+    ' text-success'  : isSuccess,
+     'text-warning'  : isWarning,
+     'text-danger'   : isError,
+     'text-info'     : isInfo }">
+    <strong class="mr-auto">{{title}}</strong>
+    <small>{{teaser}}</small>
+    <button type="button" class="ml-2 mb-1 close" aria-label="Close" (click)="closeToast()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body" [innerHtml]="message" [ngClass]="{
+    ' alert-success'  : isSuccess,
+     'alert-warning'  : isWarning,
+     'alert-danger'   : isError,
+     'alert-info'     : isInfo }"></div>
+</div>

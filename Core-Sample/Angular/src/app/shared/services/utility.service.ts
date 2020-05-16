@@ -127,7 +127,6 @@ export class UtilityService {
     return newObject;
   }
 
-
   public setTimer(seconds: number, func: any) {
 
     const source$ = interval(1000);
